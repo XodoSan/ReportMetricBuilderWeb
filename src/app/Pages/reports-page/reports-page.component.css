@@ -1,0 +1,38 @@
+.incription_div{
+    position: relative;
+    left: 36px;
+}
+
+.inscription_string2{
+    position: absolute;
+    top: 245px;
+}
+
+.provider{
+    position: relative;
+    left: 305px;
+    top: 235px;
+}
+
+.inscription_string{
+    position: absolute;
+    top: 161px;
+}
+
+.year{
+    position: absolute;
+    left: 305px;
+    top: 150px;
+}
+
+.button1{
+    position: absolute;
+    left: 341px;
+    bottom: 160px;
+}
+
+.button2{
+    position: absolute;
+    left: 341px;
+    bottom: 100px;
+}

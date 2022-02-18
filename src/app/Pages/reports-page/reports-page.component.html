@@ -1,0 +1,24 @@
+<app-metric-service [checkboxItems]="checkboxItems" [year]="year"></app-metric-service>
+
+<div class="incription_div">
+    <p class="inscription_string">Год для поиска</p>
+    <mat-form-field class="year">
+        <mat-label>Год</mat-label>
+        <input matInput type="number" placeholder="year" [(ngModel)]="year">
+    </mat-form-field>
+
+    <p class="inscription_string2">Типы размещения</p>
+    <div class="provider" *ngFor="let item of checkboxItems">
+        <mat-checkbox [(ngModel)]="item.checked">
+          <span [class.active]="item.checked">
+            {{item.label}}
+          </span>
+        </mat-checkbox>
+      </div>
+</div>
+
+<button mat-button (click)="ShowChart()" class="button1" color="primary">Обновить</button>
+<button mat-button (click)="CreateExcelDocument()" class="button2" color="primary">Сформировать Excel документ</button>
+
+<app-view-model></app-view-model>
+

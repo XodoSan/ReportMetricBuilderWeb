@@ -1,38 +1,132 @@
-.incription_div{
-    position: relative;
-    left: 36px;
+@import url('https://fonts.googleapis.com/css?family=Roboto Condensed');
+
+.text-header__travelline{
+    font-size: 44.31px;
+    background: linear-gradient(#8F09F9,#2384F5,#73DDFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Roboto Condensed';
+    font-weight: bold;
 }
 
-.inscription_string2{
+.text-header__reportBuilder{
+    margin-top: 12px;
+    font-size: 27.69px;
+    background: linear-gradient(#23C7D1,#3E24E2,#8F01FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Roboto Condensed';
+}
+
+.text-year__size{
+    width: 199px;
+    height: 34px;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 110%;
+    color: #1E1E1E;
+}
+
+.text-providerType__size{
+    font-size: 24px;
+    font-style: normal;
+    line-height: 32px;
+    width: 212px;
+    font-weight: 300;
+}
+
+.upper-indent{
+    margin-top: 50px;
+}
+
+.header{
+    margin-top: 82px;
+}
+
+.left-side{
+    width: 384px;
+    margin-left: 36px;
+    font-family: 'Roboto Condensed';
+}
+
+.small-header__div{
+    justify-content: space-between;
+    display: flex;
+    margin-top: 50px;
+}
+
+.right-size{
+    width: 102px;
+    height: 30px;
+    font-family: 'Roboto Condensed';
+    font-size: 20px;
+    text-decoration-line: underline;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    font-weight: 300px;
+}
+
+.text-header__div{
+    margin-top: 38px;
+    justify-content: space-between;
+    display: flex;
+}
+
+.bottom__button{
+    font-size: 21px;
+    font-family: 'Roboto Condensed';
+    align-items: center;
+    display: flex;
+    justify-content: center;    
+}
+
+.checkbox__div{
+    font-size: 17px;
+}
+
+.option{
+    display: block;
+    margin-bottom: 0.25em;
+    height: 50.2px;
+    border: 1px solid #3A9BF4;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.year-size__input{
+    width: 102px;
+    height: 34px;
+    font-family: 'Roboto Condensed';
+    font-size: 25px;
+    background-color: #FFFFFF;
+    border: 1px solid #3A9BF4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.check{
+    padding-left: 1.3em;
+}
+
+.check__input{
     position: absolute;
-    top: 245px;
+    -webkit-appearance: none;
+    appearance: none;
+    -moz-appearance: none;
 }
 
-.provider{
-    position: relative;
-    left: 305px;
-    top: 235px;
+.check__box{
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    background-image: url(../../../images/Ellipse.svg);
+    margin-left: -17px;
+    margin-top: 12px;
 }
 
-.inscription_string{
-    position: absolute;
-    top: 161px;
-}
-
-.year{
-    position: absolute;
-    left: 305px;
-    top: 150px;
-}
-
-.button1{
-    position: absolute;
-    left: 341px;
-    bottom: 160px;
-}
-
-.button2{
-    position: absolute;
-    left: 341px;
-    bottom: 100px;
+.check__input:checked + .check__box{
+    background-image: url(../../../images/Ellipse_active.svg);
 }

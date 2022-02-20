@@ -11,29 +11,38 @@ import { ViewModelComponent } from 'src/app/Services/view-model/view-model.compo
 })
 export class ReportsPageComponent implements OnInit 
 {  
-  checkboxItems: CheckboxItem[] = [];
+  checkboxMetrics: CheckboxItem[] = [];
+  checkboxProviders: CheckboxItem[] = [];
   requiredDatas: RequiredData[] = [];
   providerTypes: Provider[] = [];
 
   metricsTimestamp: any;
   metricsCount: any;
   year = 0;
+  counter = 0;
 
   constructor() {}
   
   @ViewChild(MetricServiceComponent) serviceChild!: MetricServiceComponent;
   @ViewChild(ViewModelComponent) viewChild!: ViewModelComponent;
 
-  ngOnInit() //Способ задания чекбокс итемов
+  ngOnInit()
   {
-    this.checkboxItems.push(new CheckboxItem(0, 'Hotel', false));
-    this.checkboxItems.push(new CheckboxItem(1, 'HotelAlt', false));
-    this.checkboxItems.push(new CheckboxItem(2, 'Hostel', false));
-    this.checkboxItems.push(new CheckboxItem(3, 'Apartment', false));
-    this.checkboxItems.push(new CheckboxItem(4, 'Sanatorium', false));
-    this.checkboxItems.push(new CheckboxItem(5, 'Camp', false));
-    this.checkboxItems.push(new CheckboxItem(6, 'Glamping', false));
-    this.checkboxItems.push(new CheckboxItem(7, 'TourOperator', false));
+    this.checkboxProviders.push(new CheckboxItem(0, 'Hotel', false));
+    this.checkboxProviders.push(new CheckboxItem(1, 'HotelAlt', false));
+    this.checkboxProviders.push(new CheckboxItem(2, 'Hostel', false));
+    this.checkboxProviders.push(new CheckboxItem(3, 'Apartment', false));
+    this.checkboxProviders.push(new CheckboxItem(4, 'Sanatorium', false));
+    this.checkboxProviders.push(new CheckboxItem(5, 'Camp', false));
+    this.checkboxProviders.push(new CheckboxItem(6, 'Glamping', false));
+    this.checkboxProviders.push(new CheckboxItem(7, 'TourOperator', false));
+
+    this.checkboxMetrics.push(new CheckboxItem(0, 'BookingWindowcomparisonType:', false))
+    this.checkboxMetrics.push(new CheckboxItem(1, 'GeneralBookingCharts', false))
+    this.checkboxMetrics.push(new CheckboxItem(2, 'CancellationcomparisonType:', false))
+    this.checkboxMetrics.push(new CheckboxItem(3, 'OccupancyRate', false))
+    this.checkboxMetrics.push(new CheckboxItem(4, 'DemandCalendar', false))
+    this.checkboxMetrics.push(new CheckboxItem(5, 'SalesDistribution', false))
   }
 
   async ShowChart()
@@ -50,5 +59,13 @@ export class ReportsPageComponent implements OnInit
   {
     this.serviceChild.FillingProviderTypes();
     window.location.href='http://localhost:5000/api/Excel/Reports/' + this.year + '/' + this.serviceChild.providerTypes;
+  } 
+
+  async SelectAllCheckboxItems(checkboxItem: CheckboxItem[])
+  {    
+    for (var i = 0; i < checkboxItem.length; i++)
+    {
+      checkboxItem[i].checked = !checkboxItem[i].checked;
+    }
   }
 }

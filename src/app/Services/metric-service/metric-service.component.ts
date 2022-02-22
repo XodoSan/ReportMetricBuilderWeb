@@ -29,17 +29,20 @@ export class MetricServiceComponent
   {
     this._http = http;
   }
-
+  
   async GetRequiredData(): Promise<RequiredData[]>
-  {
+  {    
     this.FillingProviderTypes();
     this.FillingMetrics();
     
     this.metricsByDays = await this._http
-      .get<MetricByDay[]>('/api/Chart/GetData/' + this.year + '/' + this.providerTypes + '/')
+      .get<MetricByDay[]>('/api/Chart/GetData/' + this.year + '/' + this.providerTypes.join('&'))
       .toPromise();
 
     this.FillingRequiredDatas();
+
+    this.providerTypes = [];
+    this.metricsDescriptions = [];
 
     return this.requiredDatas;
   }
@@ -72,7 +75,7 @@ export class MetricServiceComponent
     {
       for (var j = 0; j < this.metricsByDays[i].metricCounts.length; j++)
       {
-        if (this.metricsByDays[i].metricCounts[j].description == this.metricsDescriptions[j])
+        if (this.metricsDescriptions.includes(this.metricsByDays[i].metricCounts[j].description))
         {
           this.calculator += this.metricsByDays[i].metricCounts[j].counter;
         }

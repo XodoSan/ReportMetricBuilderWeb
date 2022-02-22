@@ -2,7 +2,7 @@ import { Component, OnInit, Provider, ViewChild } from '@angular/core';
 import { CheckboxItem } from 'src/app/Entities/checkbox-item';
 import { RequiredData } from 'src/app/Entities/required-data';
 import { MetricServiceComponent } from 'src/app/Services/metric-service/metric-service.component';
-import { ViewModelComponent } from 'src/app/Services/view-model/view-model.component';
+import { ViewModelComponent } from 'src/app/Pages/view-model/view-model.component';
 
 @Component({
   selector: 'app-reports-page',
@@ -18,7 +18,7 @@ export class ReportsPageComponent implements OnInit
 
   metricsTimestamp: any;
   metricsCount: any;
-  year = 0;
+  year = 2021;
   counter = 0;
 
   constructor() {}
@@ -52,14 +52,17 @@ export class ReportsPageComponent implements OnInit
     this.metricsTimestamp = this.requiredDatas.map((requiredDatas: any) => requiredDatas.timestamp);
     this.metricsCount = this.requiredDatas.map((requiredDatas: any) => requiredDatas.counter);
     
+    this.serviceChild.requiredDatas = [];
     this.viewChild.MakeChart(this.metricsTimestamp, this.metricsCount);
   }
 
   async CreateExcelDocument()
   {
     this.serviceChild.FillingProviderTypes();
-    window.location.href='http://localhost:5000/api/Excel/Reports/' + this.year + '/' + this.serviceChild.providerTypes;
-  } 
+    window.location.href='http://localhost:5000/api/Excel/Reports/' + this.year + '/' + this.serviceChild.providerTypes.join('&');
+
+    this.serviceChild.providerTypes = [];
+  }
 
   async SelectAllCheckboxItems(checkboxItem: CheckboxItem[])
   {    

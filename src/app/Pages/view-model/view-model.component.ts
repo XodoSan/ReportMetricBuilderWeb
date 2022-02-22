@@ -10,14 +10,21 @@ export class ViewModelComponent
 {
   constructor() {}
 
+  myChart: any;
+  
   MakeChart(metricsTimestamp: any, metricsCounts: any) 
   {
-    const myChart = new Chart("myChart", {
+    if (this.myChart != undefined)
+    {
+      this.myChart.destroy();
+    }
+    
+    this.myChart = new Chart("myChart", {
       type: 'line',
       data: {
         labels: metricsTimestamp,
         datasets: [{
-          label: 'Вхождения метрик',
+          label: 'Вхождения описаний метрик',
           data: metricsCounts,
           backgroundColor: 'rgb(255, 99, 132)',
           borderWidth: 1

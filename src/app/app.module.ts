@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MetricServiceComponent } from './Services/metric-service/metric-service.component';
-import { ViewModelComponent } from './Services/view-model/view-model.component';
+import { ViewModelComponent } from './Pages/view-model/view-model.component';
 
 @NgModule({
   declarations: [

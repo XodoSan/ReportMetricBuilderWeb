@@ -1,8 +1,8 @@
-<app-metric-service 
-[checkboxProviders]="checkboxProviders"
-[checkboxMetrics]="checkboxMetrics" 
-[year]="year">
-</app-metric-service>
+<app-reports-page-view-model 
+[checkboxProviders]="reportLogicModel.checkboxProviders"
+[checkboxMetrics]="reportLogicModel.checkboxMetrics" 
+[year]="reportLogicModel.year"
+#reportLogicModel></app-reports-page-view-model>
 
 <div class="left-side">
   <div class="text-header__div">
@@ -14,30 +14,34 @@
 
   <div class="small-header__div">
     <h1 class="text-year__size">Год для поиска</h1>
-    <input class="year-size__input" MatInput type="number" [(ngModel)]="year">
+    <input class="year-size__input" MatInput type="number" [(ngModel)]="reportLogicModel.year" ngModel maxlength="4">
   </div>
 
   <div class="upper-indent"></div>
   <div class="small-header__div">
     <h1 class="text-providerType__size">Типы размещения</h1>
-    <button mat-button (click)="SelectAllCheckboxItems(checkboxProviders)" class="right-size">выбрать всё</button>
+    <button mat-button 
+    (click)="reportLogicModel.SelectAllCheckboxProviders(reportLogicModel.checkboxProviders)" 
+    class="right-size">выбрать всё</button>
   </div>
 
-  <div class="checkbox__div" *ngFor="let item of checkboxProviders">
+  <div class="checkbox__div" *ngFor="let item of reportLogicModel.checkboxProviders">
     <label class="check option">
       <input MatInput class="check__input" type="checkbox" [(ngModel)]="item.checked">
         <span class="check__box" [class.active]="item.checked"></span>
-          {{item.label}}
+          <p>{{item.label}}</p>
     </label>
   </div>
 
   <div class="upper-indent"></div>
   <div class="small-header__div">
     <h1 class="text-providerType__size">Метрики</h1>
-    <button mat-button (click)="SelectAllCheckboxItems(checkboxMetrics)" class="right-size">выбрать всё</button>
+    <button mat-button 
+    (click)="reportLogicModel.SelectAllCheckboxMetrics(reportLogicModel.checkboxMetrics)" 
+    class="right-size">выбрать всё</button>
   </div>
 
-  <div class="checkbox__div" *ngFor="let item of checkboxMetrics">
+  <div class="checkbox__div" *ngFor="let item of reportLogicModel.checkboxMetrics">
     <label class="check option">
       <input MatInput class="check__input" type="checkbox" [(ngModel)]="item.checked">
         <span class="check__box" [class.active]="item.checked"></span>
@@ -46,8 +50,7 @@
   </div>
 
   <div class="small-header__div">
-    <button class="bottom__button" mat-button (click)="CreateExcelDocument()">Сформировать Excel документ</button>
-    <button class="bottom__button" mat-button (click)="ShowChart()">Обновить</button>
+    <button class="bottom__button" mat-button (click)="reportLogicModel.ShowChart()">Обновить</button>
   </div>
 </div>
 

@@ -1,4 +1,4 @@
-export class RequiredData {
+export class ChartMetric {
     public timestamp: string;
     public counter: number;
 

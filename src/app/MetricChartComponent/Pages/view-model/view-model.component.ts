@@ -8,9 +8,7 @@ import Chart from 'chart.js/auto';
 })
 export class ViewModelComponent
 {
-  constructor() {}
-
-  myChart: any;
+  private myChart: any;
   
   MakeChart(metricsTimestamp: any, metricsCounts: any) 
   {
@@ -24,7 +22,7 @@ export class ViewModelComponent
       data: {
         labels: metricsTimestamp,
         datasets: [{
-          label: 'Вхождения описаний метрик',
+          label: 'Вхождения метрик',
           data: metricsCounts,
           backgroundColor: 'rgb(255, 99, 132)',
           borderWidth: 1

@@ -9,15 +9,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MetricServiceComponent } from './Services/metric-service/metric-service.component';
-import { ViewModelComponent } from './Pages/view-model/view-model.component';
+import { MetricService } from './Services/metric-service';
+import { ChartComponent } from './Components/chart/chart.component';
+import { ReportsPageViewModel } from './Pages/reports-page/reports-page.viewmodel';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReportsPageComponent,
-    MetricServiceComponent,
-    ViewModelComponent,
+    MetricService,
+    ChartComponent,
+    ReportsPageViewModel
   ],
   imports: [
     BrowserModule,

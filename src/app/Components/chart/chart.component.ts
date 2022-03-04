@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { Component, Injectable } from '@angular/core';
 import Chart from 'chart.js/auto';
 
 @Component({
-  selector: 'app-view-model',
-  templateUrl: './view-model.component.html',
-  styleUrls: ['./view-model.component.css']
+  selector: 'app-chart',
+  templateUrl: './chart.component.html',
+  styleUrls: ['./chart.component.css']
 })
-export class ViewModelComponent
+@Injectable({
+  providedIn: 'root',
+})
+export class ChartComponent
 {
   private myChart: any;
   
@@ -37,4 +40,5 @@ export class ViewModelComponent
       }
     });
   }
+
 }

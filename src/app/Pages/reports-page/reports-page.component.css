@@ -129,11 +129,11 @@
     display: inline-block;
     width: 23px;
     height: 23px;
-    background-image: url(../../../../images/Ellipse.svg);
+    background-image: url(../../../images/Ellipse.svg);
     margin-left: -17px;
     margin-right: 10px;
 }
 
 .check__input:checked + .check__box{
-    background-image: url(../../../../images/Ellipse_active.svg);
+    background-image: url(../../../images/Ellipse_active.svg);
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ChartComponent } from 'src/app/Components/chart/chart.component';
+import { ChartViewModel } from 'src/app/Components/chart/chart.view-model';
 import { MetricService } from 'src/app/Services/metric-service';
 import { ReportsPageViewModel } from './reports-page.view-model';
 
@@ -12,8 +12,8 @@ export class ReportsPageComponent
 {  
   public ReportsPageViewModel: ReportsPageViewModel;
 
-  constructor(private metricService: MetricService, private chartComponent: ChartComponent) 
+  constructor(private metricService: MetricService, private chartViewModel: ChartViewModel) 
   {
-    this.ReportsPageViewModel = new ReportsPageViewModel(this.metricService, this.chartComponent);    
+    this.ReportsPageViewModel = new ReportsPageViewModel(this.metricService, this.chartViewModel);    
   }
 }

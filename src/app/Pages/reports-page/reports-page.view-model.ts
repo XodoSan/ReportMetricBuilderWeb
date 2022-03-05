@@ -1,4 +1,4 @@
-import { ChartComponent } from "src/app/Components/chart/chart.component";
+import { ChartViewModel } from "src/app/Components/chart/chart.view-model";
 import { ChartMetric } from "src/app/Entities/chart-metric";
 import { CheckboxItem } from "src/app/Entities/checkbox-item";
 import { MetricService } from "src/app/Services/metric-service";
@@ -16,7 +16,8 @@ export class ReportsPageViewModel{
     private metricsCount: any;
     
 
-    constructor(private metricService: MetricService, private chartComponent: ChartComponent){
+    constructor(private metricService: MetricService, private chartViewModel: ChartViewModel)
+    {
         this.checkboxProviders.push(new CheckboxItem(0, 'Hotel', false));
         this.checkboxProviders.push(new CheckboxItem(1, 'HotelAlt', false));
         this.checkboxProviders.push(new CheckboxItem(2, 'Hostel', false));
@@ -61,6 +62,6 @@ export class ReportsPageViewModel{
         this.metricsCount = this.chartMetrics.map((requiredDatas: any) => requiredDatas.counter);
         
         this.metricService.chartMetrics = [];
-        this.chartComponent.MakeChart(this.metricsTimestamp, this.metricsCount);
+        this.chartViewModel.MakeChart(this.metricsTimestamp, this.metricsCount);
     }
 }

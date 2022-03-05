@@ -1,5 +1,6 @@
 import { Component, Injectable } from '@angular/core';
-import Chart from 'chart.js/auto';
+import { Chart } from 'chart.js';
+import { ChartViewModel } from './chart.view-model';
 
 @Component({
   selector: 'app-chart',
@@ -11,34 +12,12 @@ import Chart from 'chart.js/auto';
 })
 export class ChartComponent
 {
-  private myChart: any;
-  
-  MakeChart(metricsTimestamp: any, metricsCounts: any) 
-  {
-    if (this.myChart != undefined)
-    {
-      this.myChart.destroy();
-    }
-    
-    this.myChart = new Chart("myChart", {
-      type: 'line',
-      data: {
-        labels: metricsTimestamp,
-        datasets: [{
-          label: 'Вхождения метрик',
-          data: metricsCounts,
-          backgroundColor: 'rgb(255, 99, 132)',
-          borderWidth: 1
-        }]
-      },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
-    });
-  }
+  public chartViewModel: ChartViewModel;
+  public myChart: Chart;
 
+  constructor() 
+  {
+    this.chartViewModel = new ChartViewModel();    
+    this.myChart = this.chartViewModel.myChart;
+  }
 }

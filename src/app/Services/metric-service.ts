@@ -1,14 +1,10 @@
-import { Component, Injectable, Input } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import * as moment from 'moment'
 import { ChartMetric } from '../Entities/chart-metric';
 import { MetricByDay } from '../Entities/metric-by-day';
 import { CheckboxItem } from '../Entities/checkbox-item';
 
-@Component({
-  selector: 'app-metric-service',
-  template: ''
-})
 @Injectable({
     providedIn: 'root',
 })
@@ -32,12 +28,10 @@ export class MetricService
         let providerTypes = this.FillingProviderTypes(checkboxProviders);
         let metricDescriptions = this.FillingMetrics(checkboxMetrics);
         
-        console.log(year, metricDescriptions, providerTypes);
-
         let metricsByDays: MetricByDay[] = await this._http
             .get<MetricByDay[]>('/api/Chart/GetData/' + year + '/' + providerTypes.join('&'))
             .toPromise();
-        console.log(metricsByDays);
+
         this.FillingChartMetrics(metricDescriptions, metricsByDays);
 
         return this.chartMetrics;
@@ -46,6 +40,7 @@ export class MetricService
     private FillingProviderTypes(checkboxProviders: CheckboxItem[]): number[]
     {
         let providerTypes: number[] = [];
+
         for (var i = 0; i < checkboxProviders.length; i++)
         {
             if (checkboxProviders[i].checked == true)
